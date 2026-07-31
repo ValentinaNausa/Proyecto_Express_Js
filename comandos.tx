@@ -1,0 +1,33 @@
+//Lista De Comandos
+npm install -g yarn
+
+mkdir intro-express-js-pepito-perez
+
+cd intro-express-js-pepito-perez
+
+npm install express 
+//enrutador
+https://web.whatsapp.com/send?phone=+573163601029
+
+//INICIAR SERVIDOR, y se vean cambios segun el codigo
+
+node --watch app.js
+
+//OTRO COMANDO PARA INICIAR EL SERVIDOR, configurar el package.json
+
+npm run dev
+
+//VER CONFIGURACIÓN
+
+git config --global --list
+git config --list
+
+//BORAR CONFIGURACIÓNES
+
+git config --global --unset user.name
+git config --global --unset user.email
+
+//CREAR LA CONFIGURACIÓN
+
+git config --global user.name "Valentina Nausa"
+git config --global user.email "Valentinanausa@gmail.com"
