@@ -1,5 +1,3 @@
-PUERTO = 3030
-NODE_ENV = development// Validar que el nombre tenga mínimo 3 letras
 function validarNombre(nombre) {
   if (typeof nombre !== "string") {
     return false;

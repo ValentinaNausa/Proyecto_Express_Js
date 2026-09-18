@@ -8,9 +8,12 @@ const ruta = require("path")
 const rutaArchivoJson = ruta.join(__dirname, "datos.json")
 //importar libreria para subir archivos
 const multer = require("multer")
+const jwt = require("jsonwebtoken")
 //importacion de middleware personales
-const registroMiddleware = require("./middleware/registroMiddleware")
-const manejadorErrores = require("./middleware/manejoErrores")
+const registroMiddleware = require("./middleware/registroMiddleware");
+const manejadorErrores = require("./middleware/manejadorErrores");
+const autenticarMiddleware = require("./middleware/autenticarMiddleware");
+
 //importar validaciones
 const {validarNombre, validarCorreo, generarId} = require("./utilidades/validaciones")
 //configurar almacenamiento
@@ -130,6 +133,28 @@ app.delete("/api/aprendices/:id", (req, res)=>{
 //provocar error, utilizo next
 app.get("/error", (req, res, next)=>{
   next(new Error("Error intencional para probar."))
+})
+
+//ruta protegida, necesita un token
+app.post("/rutaprotegida", autenticarMiddleware , (req, res)=>{
+  res.json({mensaje: "Esta ruta esta protegida."})
+})
+
+//endpoint iniciar sesion, generar token
+app.post("/login", (req, res)=>{
+  //capturar usuario y clave
+  const {usuario, clave} = req.body
+  //simular usuario de base de datos
+  const usuarioBd = {"user": "Valentina", "clave": "Valentina123"}
+  //verificar datos
+  if(usuario !== usuarioBd.user || clave !== usuarioBd.clave){
+    res.json({mensaje: "Credenciales incorrectas"})
+  }
+  //generar el token 
+  const token = jwt.sign({usuario: usuario},
+    process.env.JWT_SECRETO,
+    {expiresIn: "2h"}
+  )
 })
 
 //uso del middleware de errores
