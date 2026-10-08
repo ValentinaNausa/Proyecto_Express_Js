@@ -1,19 +1,21 @@
 {
-  "name": "intro-express-js-valentina-nausa",
+  "name": "intro-express-js-Valentina-Nausa",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch app.js",
+    "dev": "node --watch src/server.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.3.0"
   }
 }
