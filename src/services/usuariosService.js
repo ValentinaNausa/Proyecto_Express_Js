@@ -14,7 +14,9 @@ const crear = async (email, username,clave, foto)=>{
         foto: foto
 
     }})
+    return userNew
 }
 
 
-module.exports = listar
+
+module.exports = (listar, crear)
